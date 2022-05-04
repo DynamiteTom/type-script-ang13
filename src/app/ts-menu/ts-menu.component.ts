@@ -125,7 +125,7 @@ const subTopicsInfo = [
   'catch-bugs-early - errors discovered at compile time', 
   'TypeScript compiler is very important for tooling',
   'Union types - permit us to assign a variable as a combination of 2 or more types eg myval: number|string;', 
-  'Tuples -  a comma sep list of els inside ()- (2,4,7,9)'
+  'Tuples - a comma sep list of els inside ()- (2,4,7,9)'
  ],
  [
  'TS3.5 - Speed improvements - Omit helper type - --allowUmdGlobalAccess - Smarter Union checking - Higher order type inference from generic constructors',  
