@@ -5,6 +5,7 @@ const features = `
     'const_let_val', 
     'copy_array', 
     'interf_class',
+    'V8',
     'JavaScript',
     'types', 
     'Objects',
@@ -13,6 +14,7 @@ const features = `
     'Decorators - ',
     'dots', 
     'ts_other',
+    'ts-backend',
     'TS versions'
 `;
 
@@ -20,6 +22,17 @@ const subTopics = [
     ['const','let','val'], 
     ['arrays', 'shallow_copy', 'deep_copy','destructuring'], 
     ['interface', 'class','inheritance', 'inferredTypes', 'optionalChaining', 'nullishCoalescence'], 
+    ['V8',
+      '--- Google JS + WebAssembly',
+      '------ C++',
+      '--- Chromse',
+      '--- Node.js',
+      '-- runs on Windows 7+ - implements',
+      '------ ES (EcmaScript)',
+      '------ WebAssembly',
+
+      
+    ],
     ['JavaScript', 'EcmaScript', 'ES6-plus'],
     ['TypeScript', 'Type system','a type', 'primitive-types', 'type-inference', 'type-generics', 'strong-types', 'strict-null-checks','strict-type-checking','read-only','partial-types','template-literal-types','Type Guards','narrowing'], 
     ['Object types', 'Property modifiers', 'Array', 'destructuring','spread ...'],
@@ -28,6 +41,28 @@ const subTopics = [
     ['Decorators'],
     ['rest','spread'],
     ['ts_transpiles-js', 'ngc - Angular Compiler', 'tsconfig.json', 'VS-Code', 'es-all-browsers', 'getter-setter', 'catch-bugs-early', 'tsc-tooling', 'ts-union-types','tuples'],
+    ['ts-backend',
+    '--- Node.js runtime',
+    '------ TS - AWS lambda',
+    '-------- AWS SDK',
+    '---------- IAM',
+    '------ Transpiler - compiler',
+    '--------- ESBuild',
+    '------------ Transform API',
+    '---------------  Simple Transform Options',
+    '---------------  Advanced Transform Options',
+    
+    '------------ Build API',
+    '---------------  Simple Build Options',
+    '---------------  Advanced Build Options',
+      
+    '------------ Cmd Line API',
+    
+    '--------- tsc',
+    '------ Simplify Build|Deploy',
+    '--------- AWS SAM',
+    '--------- AWS CDK',
+    ],
     ['TS3.5','TS3.6-7 Ang9', 'TS3.8','TS3.9 Ang10','TS4.0 Ang11','TS4.1','TS4.2 Ang12','TS4.3','TS4.4','TS4.5 Ang13','TS4.6']
 ];
 
@@ -127,6 +162,195 @@ const subTopicsInfo = [
   'Union types - permit us to assign a variable as a combination of 2 or more types eg myval: number|string;', 
   'Tuples - a comma sep list of els inside ()- (2,4,7,9)'
  ],
+ [`ts-backend - 
+ 
+ `,
+  `--- Node.js and AWS Lambda
+    <br/>----- Node.js - doesn't run TS code natively
+    <br/>----- First transpile TS to JS 
+    <br/>-------- Use JS files to deploy ftn code to Lambda
+    <br/>----------- Code runs in envt - includes - AWS-SDK for JS
+  `,
+  `------ Use Node.js runtime 
+  <br/>------- to run TS code in AWS Lambda    
+  
+  `,
+  `------ AWS SDK - 
+  <br/>------ code runs in env't including AWS SDK for JS  
+  <br/>-------- with credentials from the IAM 
+  <br/>---------------------- (AWS identity and Access Management role) 
+  
+  `,
+  `---------- IAM - AWS identity and Access Management role you manage
+    <br/>------- provides fne-tuned access control x all AWS
+    <br/>----------- can securely specify who can access which services  
+    <br/>---------------- AWS account root user
+    <br/>-------------------- email + pwd
+  
+    `,
+    `-------- RBAC (default) | ABAC
+      <br/>RBAC - Role-based access control
+      <br/>--- defines permissions based on a persons job ftn (role) 
+      <br/>------- identity in IAM 
+      <br/>---------- Managed policies for job ftns - perms to a job ftn 
+      <br/>---- Identities
+      <br/>---------- users | groups of users | IAM roles
+      <br/>-------------- grant min permissions for a job ftn (grant least privilige )
+      <br/>---- DisAdv - Add new resources
+      <br/>---------- Update policies to allow access to resources
+      <br/>
+      <br/> -- 
+      <br/>ABAC - Attribute-based access control
+      <br/>---- authorization strategy defines permissions based on attributes (tags  )
+      <br/>-------- attach tags to IAM resources 
+      <br/>-------- including IAM entities (users or roles)
+      <br/>
+      <br/>----- IAM principes
+      <br/>-------- 1 ABAC policy
+      <br/>-------- small set of policies
+      <br/>------ helps when policy mgmt becomes cumbersome
+      <br/>-------- access-project tag key  
+    `,
+  `------ Transpiler - compiler`,
+  `--------- ESBuild - does not do type checking`,
+  `------------- transform API 
+  <br/>------------ operates on 1 string withou access to a file system
+  <br/>---------------- ideal in browsers or as part of a tool chain  
+  <br/> $ echo 'let x: number = 1' | esbuild --loader=ts
+  <be/> let x = 1;
+  `,
+  `---------------- Simple Transform Opions
+  <br/>-------------- Define
+  <br/>-------------- Format
+  <br/>-------------- Loader
+  <br/>-------------- Minify  
+  <br/>-------------- Sourcemap  
+  <br/>-------------- Target
+`,
+`---------------- Advanced Transform Opions
+<br/>-------------- Banner
+<br/>-------------- Charset 
+<br/>-------------- Color
+<br/>-------------- Drop  
+<br/>-------------- Footer  
+<br/>-------------- Globral name
+<br/>-------------- Ignore annotation
+<br/>-------------- Jsx
+<br/>-------------- Keep names
+<br/>-------------- Legal comments  
+<br/>-------------- Log level  
+<br/>-------------- Log limit
+<br/>-------------- Log override  
+<br/>-------------- Mangle props
+<br/>-------------- Pure
+<br/>-------------- Source root
+<br/>-------------- Sourcefile
+<br/>-------------- Sources content
+<br/>-------------- Supported
+<br/>-------------- Tree shaking
+<br/>-------------- Tsconfig raw
+`,
+`------------- build API 
+    <br/>------------ operates on 1+ files in file system
+    <br/>---------------- allows files to ref eachothre and be bundled together
+    <br/>
+    <br/>$ echo 'let x: number = 1' > in.ts
+    <br/>$ esbuild in.ts --outfile=out.js
+    <br/>$ cat out.js
+    <br/>let x = 1;
+    `,
+  `---------------- Simple Build Options
+    <br/>-------------- Bundle
+    <br/>-------------- Define
+    <br/>-------------- Entry points
+    <br/>-------------- External
+    <br/>-------------- Format
+    <br/>-------------- Inject
+    <br/>-------------- Loader
+    <br/>-------------- Minify
+    <br/>-------------- Outdir  
+    <br/>-------------- Outfile  
+    <br/>-------------- Platform
+    <br/>-------------- Serve
+    <br/>-------------- Sourcemap
+    <br/>-------------- Splitting
+    <br/>-------------- Target
+    <br/>-------------- Watch  
+    <br/>-------------- Write
+  `,
+  `---------------- Advanced Build Options
+  <br/>-------------- Allow overwrite  
+  <br/>-------------- Analyze  
+  <br/>-------------- Asset names
+  <br/>-------------- Banner 
+  <br/>-------------- Charset  
+  <br/>-------------- Chunk names
+  <br/>-------------- Analyze  
+  <br/>-------------- Asset names
+  <br/>-------------- Banner 
+  <br/>-------------- Charset  
+  <br/>-------------- Chunk names
+  <br/>-------------- Color  
+  <br/>-------------- Conditions
+  <br/>-------------- Drop 
+  <br/>-------------- Entry names  
+  <br/>-------------- Footer
+  <br/>-------------- Global name
+  <br/>-------------- Ignore annotation 
+  <br/>-------------- incremental
+  <br/>-------------- Jsx
+  <br/>-------------- Keep names
+  <br/>-------------- Legal comments
+  <br/>-------------- Log level  
+  <br/>-------------- Log limit
+  <br/>-------------- Log override  
+  <br/>-------------- Main fields    
+  <br/>-------------- Mangle props
+  <br/>-------------- Metafile  
+  <br/>-------------- Node paths  
+  <br/>-------------- Out extension 
+  <br/>-------------- Outbase  
+  <br/>-------------- Preserve symlinks    
+  <br/>-------------- Public path
+  <br/>-------------- Pure
+  <br/>-------------- Resolve exensions 
+  <br/>-------------- Source root  
+  <br/>-------------- Sourcefile
+  <br/>-------------- Sources content
+  <br/>-------------- Stdin
+  <br/>-------------- Supported
+  <br/>-------------- Tree shaking
+  <br/>-------------- Tsconfig
+  <br/>-------------- Working directory  
+  
+`,
+
+  `------------- cmd line API 
+    <br/>----------- 3 forms of flags 
+    <br/>---------------- >1--foo - boolean flags eg --minify
+    <br/>---------------- >2--foo=bar - single value eg --platform=
+    <br/>---------------- >3--foo:bar - mulitple values eg --external:
+
+  `,
+  
+  `--------- tsc - use tsc -noEmit to check types - then ESBuild`,
+  `------ Simplify Build|Deploy - both use ESBuild to transpile TS to JS`,
+  `--------- AWS SAM (Serverless Appn Model) 
+  <br/>--------- use AWS SAM CLI to create a serverless appn  
+  <br/>------------- that you cann package + deploy in AWS Cloud  
+  <br/>--------- Run the appn both in
+  <br/>------------- AWS Cloud 
+  <br/>------------- locally on your devt host
+  `,
+  `--------- AWS CDK (Cloud Devt Kit)
+  <br/>---------  
+  <br/>--------- 
+  `,
+  `--------- TS transpilation | Node.js runtime settings 
+  <br/>--------- tsconfig.json settings
+  <br/>--------- 
+  ` 
+],
  [
  'TS3.5 - Speed improvements - Omit helper type - --allowUmdGlobalAccess - Smarter Union checking - Higher order type inference from generic constructors',  
  'TS3.6-7 Ang9 - Optional Chaining ?. - Nullish Coalescing ?? (default val when null or undefined)- Assertion Functions - More Recursive aliases - --declaration --allowJS - useDefineForClassFields - Uncalled Function Checks', 
