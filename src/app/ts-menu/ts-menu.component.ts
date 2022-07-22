@@ -8,12 +8,15 @@ const features = `
     'V8',
     'JavaScript',
     'types', 
-    'Objects',
+    'Objects','
     'namespace', 
     'Modules', 
     'Decorators - ',
     'dots', 
     'ts_other',
+    'AWS Services',
+    'AWS Lambda',
+    'AWS SAM',
     'ts-backend',
     'TS versions'
 `;
@@ -41,6 +44,35 @@ const subTopics = [
     ['Decorators'],
     ['rest','spread'],
     ['ts_transpiles-js', 'ngc - Angular Compiler', 'tsconfig.json', 'VS-Code', 'es-all-browsers', 'getter-setter', 'catch-bugs-early', 'tsc-tooling', 'ts-union-types','tuples'],
+    ['AWS Services',
+        '--- EC2',
+        '--- S3',
+        '--- Amazon DynamoDB',
+        '--- Amazon Aurora'
+    ],
+    ['AWS Lambda',
+    '--- Serverless compute service',
+    '--- 3 parts',
+    '--- management console | API',
+    '--- Features',
+    ], 
+    [ 'AWS SAM',
+    '--- CloudFormation Service | Template',
+    '--- SAM Developer Guide',
+    '--- SAM Benefits',
+    '--- SAM CLI',
+    '--- CloudFormation Service',
+    '--- CloudFront - web service',
+    '------- CDN (Content Delivery Network)',
+    '------- fast delivery to S3',
+    '------- CloudFront distribution',
+    '---------- Edge locations',  
+    '------------- cached copies',
+    '------- distributes static | dynamic',
+    '------- Content Privacy - security',
+    '------- GEO-targeting',
+    '------- HTTP| HTTPS - quick delivery'
+   ],
     ['ts-backend',
     '--- Node.js runtime',
     '------ TS - AWS lambda',
@@ -62,6 +94,7 @@ const subTopics = [
     '------ Simplify Build|Deploy',
     '--------- AWS SAM',
     '--------- AWS CDK',
+    '-------------- define Cloud resources',
     ],
     ['TS3.5','TS3.6-7 Ang9', 'TS3.8','TS3.9 Ang10','TS4.0 Ang11','TS4.1','TS4.2 Ang12','TS4.3','TS4.4','TS4.5 Ang13','TS4.6']
 ];
@@ -76,13 +109,16 @@ const subTopicsInfo = [
   'shallow_copy means the array shares info from the original array', 
   'deep_copy means we create a new copy of the array which holds the same data', 
   'assigns diff els to array and means els can be refd separately'],
-  ['interfaces data - simplifies a set of data or methods which is to be used in a class or other operation - when inherited all methods must be implemented', 
+  ['interfaces data - simplifies a set of da./ta or methods which is to be used in a class or other operation - when inherited all methods must be implemented', 
   'Classes allow us to define objects that implement interfaces',
   'Inheritance means one class can inherit from another', 
   'Inferred Types',
   'optionalChaining - TS 3.7 - using a ? to identify if object exists or not - if (foo?.bar){}', 
   'nullishCoalescence - TS 3.7 - ?? identifies if data is null when assigned a const value - x = foo ?? bar;'
 ], 
+[`V8 - 
+
+`],
  [
   `is the prog language of the WWW - web - a purely dynamic language - where you cant specify data types of variable 
   <br/>can be used both on the client side and server side - lets you make web pages interactive - gives pages interactive els to engage a user
@@ -92,7 +128,7 @@ const subTopicsInfo = [
 <br/>const and let,  fat-arrow ftns - many features that have become part of TypeScript`
  ],
   [
-    `is an extension of the JS language - uses JS runtime with a compile time Type Checker 
+    `ES is an extension of the JS language - uses JS runtime with a compile time Type Checker 
     <br/>is a Typed Language where we can specify types of the variables, ftn pars and object properties
     <br/>while adding optional static type checking - enum data types - classes & interfaces
     <br/>provdes better doc'n of codebases and improved intellisense`,
@@ -120,11 +156,12 @@ const subTopicsInfo = [
     `,
   'to do with Type Guards - refining generic types to specific types - once its assigned'
 ], 
-['A good way to group and pass around data', 
+['Objects - A good way to group and pass around data', 
 'Each property of an Object type - like - type - optional ? - readwrite',
 'Array<T> - generic array type - number[] like Array[number] or string[] like Array[string]', 
 'Array - Tuple - Object - let o = {a:\'foo\',b:12, c: null}; let {a,b} = o; assignments to parts of Object', 
-'opposite of destructuring - spread an array into another array - creates shallow copy of other arrays'],   
+'opposite of destructuring - spread an array into another array - creates shallow copy of other arrays'
+],   
 ['namespaces - '],
 ['Modules - import a type <TS 3.8 - but since 3.8 use import type -   ',
  'd.ts - export function getAL(arr){return arr.length;} equates to export function getAL(arr: any[]):number;'],
@@ -162,6 +199,116 @@ const subTopicsInfo = [
   'Union types - permit us to assign a variable as a combination of 2 or more types eg myval: number|string;', 
   'Tuples - a comma sep list of els inside ()- (2,4,7,9)'
  ],
+ [`AWS Services -  
+        <br/>S3 (Amazon Simple Storage Service) - Object storage built to Rx any data from anywhere  
+         <br/>
+        <br/>Amazon EC2 - Virtual servers in the cloud
+        <br/>
+        <br/>Amazon Lightsail - Launch and manage virtual private servers eg EC2
+        <br/>
+        <h1>Databases</h1>
+        <br/>Amazon DynamoDB - Managed NoSQL database -
+        <br/>
+        <br/>Amazone Aurora - High perf managed relational db
+ `],
+ [`AWS Lambda - 
+     <br/>is a serverless compute service that runs your code in response to events
+     <br/>and auto manages the underlying compute resources for you
+     <br/>
+     <br/>--- comprises 3 Components - 
+     <br/>------ 1: function - actual code that performs the task
+     <br/>------ 2: configuration - how ftn is executed
+     <br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
+     <br/>--------------- eg changes in state or an update - add item to cart 
+ `,
+ `--- Serverless compute service`,
+ `--- 3 parts
+ <br/>------ 1: function - actual code that performs the task
+ <br/>------ 2: configuration - how ftn is executed
+ <br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
+ <br/>--------------- eg changes in state or an update - add item to cart
+ `,
+ `--- provides a management console and API 
+ <br/>------ for managing and invoking functions 
+ <br/>------ provides supporting std set of features
+ <br/>---------- easily switch languaes | frameworks 
+ <br/>------ not just ftns
+ <br/>--------- versions| aliases| layers| cutom runtimes 
+ `,
+ `--- Features
+ <br/>------ Scaling
+ <br/>----------- runs additional instances - then stopped
+ <br/>------ Concurrency controls
+ <br/>----------- concurrency settings | reserved concurrency - subsets 
+ <br/>------ Function URLS
+ <br/>----------- built in HTTPS endpoints - webbrowser
+ <br/>------ Async invocation
+ <br/>----------- Lambda queues evt for processing and returns immediately
+ <br/>------ Event source mappings
+ <br/>----------- reads items from a SQS (Simple Queue Service) queue | Kinesis| DynamoDB stream
+ <br/>----------- sends items to ftns in batches - ftn can contain 100000 items
+ <br/>------ Destinations  
+ <br/>----------- resource to Rx invocation records for ftns
+ <br/>----------- async - send records to a queue| topic| ftn| event bus
+ <br/>------ Function blueprints
+ <br/>----------- ftns - from scratch | blueprint | container image | AWS SAR
+ <br/>----------- blueprints - Node.js | Python runtimes  
+ <br/>----------- only in the Lambda console
+ <br/>------ Testing and Deployment tools
+ <br/>----------- Deploy code as is or container images (Docker)
+ <br/>----------- Docker CLI | AWS
+ <br/>----------- AWS CLI  | SAM CLI 
+ <br/>----------- SAM CLI - validating templates | test locally | integrate with CI/CD  
+ `
+],
+[` AWS SAM (Serverless Appn Model) 
+<br/>--- use AWS SAM CLI to create a serverless appn  
+<br/>---- that you can package + deploy in AWS Cloud  
+<br/>----- Run the appn both in
+<br/>---  AWS Cloud 
+<br/>----- locally on your devt host
+`,
+`---- builds on CloudFormation Model + CloudFormation template 
+<br/>--- easily deploy resources from within CF template
+`,
+`--- SAM Developer Guide 
+<br/>------ https://docs.aws.amazon.com/serverless-application-model/latest/developerguide
+`,
+`---- CloudFormation Service | Template
+`,
+`---------- SAM benefits 
+<br/>---------- 
+`,
+`---------- SAM CLI  
+<br/>---------- console - great way to create resources manually  
+`,
+`------ AWS CloudFormation service
+<br/>------ define and configure resources inside a file
+<br/>------ provide file to Conformation service
+<br/>------ creates defined resources inside AWS  
+<br/>------ define resources inside a template to conformation service
+<br/>------ deploys all resources for you (Infrastructure as Code)
+<br/>------ improved by using the SAM - 
+`,  
+
+   `--------- CloudFormation Service
+   
+   `,
+   `--------- CloudFront - web service
+   
+   `,
+   `------------ CDN (Content Delivery Network)
+   `,
+   `------------ fast delivery to S3`,
+   `-------------- CloudFront distribution`,
+   `---------------- Edge locations`,  
+   `---------------- cached copies`,
+   `------------ distributes static | dynamic
+   `,
+   `------------ Content Privacy - security`,
+   `------------ GEO-targeting`,
+   `------------ HTTP| HTTPS - quick delivery`,
+],
  [`ts-backend - 
  
  `,
@@ -211,6 +358,7 @@ const subTopicsInfo = [
       <br/>------ helps when policy mgmt becomes cumbersome
       <br/>-------- access-project tag key  
     `,
+ 
   `------ Transpiler - compiler`,
   `--------- ESBuild - does not do type checking`,
   `------------- transform API 
@@ -324,7 +472,6 @@ const subTopicsInfo = [
   <br/>-------------- Working directory  
   
 `,
-
   `------------- cmd line API 
     <br/>----------- 3 forms of flags 
     <br/>---------------- >1--foo - boolean flags eg --minify
@@ -337,7 +484,7 @@ const subTopicsInfo = [
   `------ Simplify Build|Deploy - both use ESBuild to transpile TS to JS`,
   `--------- AWS SAM (Serverless Appn Model) 
   <br/>--------- use AWS SAM CLI to create a serverless appn  
-  <br/>------------- that you cann package + deploy in AWS Cloud  
+  <br/>------------- that you can package + deploy in AWS Cloud  
   <br/>--------- Run the appn both in
   <br/>------------- AWS Cloud 
   <br/>------------- locally on your devt host
