@@ -17,6 +17,16 @@ const features = `
     'AWS Services',
     'AWS Lambda',
     'AWS SAM',
+    'any',
+    'Top Level Await',
+    'Recursive Type Alias',
+    'Type Guards',
+    'Generics',
+    'verbose imports - tsconfig',
+    'Nullish coalescing ??',
+    'Union types',
+    'Partial generic type,
+    'json2ts',
     'ts-backend',
     'TS versions'
 `;
@@ -37,7 +47,9 @@ const subTopics = [
       
     ],
     ['JavaScript', 'EcmaScript', 'ES6-plus'],
-    ['TypeScript', 'Type system','a type', 'primitive-types', 'type-inference', 'type-generics', 'strong-types', 'strict-null-checks','strict-type-checking','read-only','partial-types','template-literal-types','Type Guards','narrowing'], 
+    ['TypeScript', 'Type system','a type', 'primitive-types', 'type-inference', 
+    'type-generics', 'strong-types', 'strict-null-checks','strict-type-checking',
+      'read-only','partial-types','template-literal-types','Type Guards','narrowing'], 
     ['Object types', 'Property modifiers', 'Array', 'destructuring','spread ...'],
     ['namespaces - '],
     ['Modules - ','d.ts files'],
@@ -73,6 +85,38 @@ const subTopics = [
     '------- GEO-targeting',
     '------- HTTP| HTTPS - quick delivery'
    ],
+   ['any type'],
+   ['Top level await'
+  
+   ],
+   ['Recursive Type Alias'],
+   ['Conditional Types'
+   ],
+   ['Unions',
+   ],
+   ['Template Literal Types'
+   ],
+   [ 'Type Guards',
+   ],
+   ['Generics',
+  
+   ],
+   ['variadic tuple types'],
+   ['Nullish coalescing'],
+   ['json2ts',
+       '--- website',
+       '--- generate ts interfaces',
+       '------ from JSON'
+    ],
+    [  'verbose imports - tsconfig'
+    ],
+    ['Nullish coalescing ??',
+    ],
+    ['Optional Chaining'],
+    ['Union types wrt enums'
+    ],
+    ['Partial generic type'
+    ],
     ['ts-backend',
     '--- Node.js runtime',
     '------ TS - AWS lambda',
@@ -308,7 +352,208 @@ const subTopicsInfo = [
    `------------ Content Privacy - security`,
    `------------ GEO-targeting`,
    `------------ HTTP| HTTPS - quick delivery`,
+], 
+['any type'],
+[`Top Level Await -  
+<br/>// Your only solution right now for a script that does something async:
+<br/>async function doEverything() {
+  <br/> ...
+  <br/>  const response = await fetch('http://example.com');
+  <br/>  ...
+  <br/>}
+  <br/>doEverything(); // <- eugh (could use an IIFE instead, but even more eugh)
+  <br/>
+  <br/>but with TS 3.7
+  <br/>const response = await fetch('http://example.com');
+  <br/>
+  `],
+   [`Recursive Type Alias - 
+   <br/>
+   <br/>--- type JSONValue =
+   <br/>------ | string
+   <br/>------ | number
+   <br/>------ | boolean
+   <br/>------ | { [x: string]: JSONValue }
+   <br/>------ | Array<JSONValue>;
+   <br/>
+  `],
+  [`Conditional Types - guarantee types during runtime
+<br/>--- relation between types of inputs and outputs 
+<br/>------ (condition ? trueExp: falseExp)
+
+<br/>
+<br/>--- very powerful when combined with Generics
+<br/>------ 
+<br/>------ type CarBrand = 'Audi' | 'Tesla';
+<br/>
+<br/>------ function createCar(brand: CarBrand): Car {
+  <br/>------ switch(brand) {
+    <br/>---------      case 'Audi':
+    <br/>------------        return new Audi();
+    <br/>---------    case 'Tesla':
+    <br/>------------        return new Tesla();
+    <br/>---------    default:
+    <br/>------------        throw Error(\`Car brand \'${brand}\' not supported.\`);
+    <br/>------}
+    <br/>---}
+
+`],
+  
+[`Union - describes a value that can be one of several types 
+<br/> x: string|number; 
+
+`],
+[`Template Literal Types - let us build more flexible types  
+<br/>--- using \` and $
+<br/>
+<br/>--- type Hello = "Hello";
+<br/>--- type World = "World";
+<br/>--- type HelloWorld = \`${Hello}${World}!\`;
+<br/>
+<br/>--- Good when used with interpolated union types
+<br/>
+<br/>type EntityType = 'Message' | 'Folder' | 'File' | 'NewEntity';
+<br/>type EventOperations = 'Created' | 'Updated' | 'Deleted';
+<br/>type EventNames = \`on${EntityType}${EventOperations}\`;
+<br/>
+`
 ],
+[`Type Guards - 
+<br/>--- used to get info about the type of a variable 
+<br/>-------- usually within a conditional block 
+<br/>-------- reg ftns that return a boolean 
+<br/>-------- taking a type and saying if it can be narrowed
+<br/>
+<br/>--- is a TS technique used to get info about 
+<br/>--- the type of a variable conditional block
+<br/>------ A method that takes a type and 
+<br/>---------- returns a boolean that says if the type can be narrowed or not
+<br/>--------------   down to a specific type
+<br/>
+<br/>--- Performs a runtime check - 
+<br/>-------- guarantees the type - helps TSC become more predictive 
+<br/>--- 
+<br/>--- List of TS Type Guards
+<br/>------- string | number | bigint | boolean | symbol | undefined | object | function 
+<br/>----------- if (typeof param === "function") 
+`,
+`------- refining generic types to specific types - once its assigned   
+`,
+`--- narrowing - moving from a less precise type to a more precise type
+<br/>------ function narrowFtn(x: string|number|Date, y:number){
+<br/>--------- if (x===y){ // narrowing to a number  
+<br/>--------- if (x === instanceof Date){ // return x.toISOString() 
+<br/>}
+<br/>------- }
+<br/>}
+<br/>------ 
+`
+],   
+[`Generics - provide a way to write flexible code 
+<br/>---- that can work with various data types (instead of 1 type)
+<br/> 
+<br/>---- Users can provide their own types 
+<br/>
+<br/>---  Write dynamic + reusable code to follow DRY (Dont Repeat Yourself)
+<br/>
+<br/>Using T with he <T> 
+<br/>
+<br/>function removeFirstEntryFromArray<T>(arr: T[]): T[] {
+<br/>----  return arr.splice(1);
+<br/>}
+<br/>
+`],
+[`variadic tuple types
+<br/>--- lets tuples handle the rest operator ...
+`,
+`---- rest operator ...`,
+`<br/>export const getDeepProp = <Obj>(obj: Obj, ...keys: readonly [keyof Obj]) => {
+ <br/>--- const send: Record<string, unknown> = {};
+ <br/>
+ <br/>--- keys.forEach(i=> {
+ <br/>------ type current = typeof obj[typeof i];
+ <br/>
+ <br/>------     send[i] = obj[i] as current;
+ <br/>--- });
+ <br/>
+ <br/>--- return send;
+ <br/>};
+ <br/>
+ <br/>export function deepClone <O> (values:O): O {
+ <br/>
+ <br/>---   if (values == null || typeof values != "object") return values;
+ <br/>
+ <br/>--- const copy: Record<string, unknown> = {};
+ <br/>
+ <br/>---     for (const attr in values) {
+ <br/>------         if (values[attr]) {
+ <br/>---------             copy[attr] = deepClone(values[attr]);
+ <br/>------         }
+ <br/>---     }
+ <br/>
+ <br/>---      return copy as O;
+ <br/>}
+ <br/>
+ <br/>export function name<O> (params:O, ...keys: string[]) {
+  <br/>---  const a: Record<string,unknown> = {};
+  <br/>
+  <br/>--- keys.forEach(key => {
+  <br/>------    a[key as keyof O] = typeof params[key as keyof O]==="object" ?
+  <br/>------    name(params[key as keyof O], ...Object.keys(params[key as keyof O])) : params[key as keyof O];
+  <br/>---  });
+<br/>
+<br/>---  return a as O;
+<br/>}
+`,
+'---- works like generics',
+`--- Tuples - are used to store multiple items in a single variable
+<br/>------ can contain 2 values of different data types
+<br/>
+<br/>------ variable emp: [number, string] = [1, "Steve"];  
+<br/>
+<br/>Using push
+<br/>------ var employee: [number, string] = [1, "Steve"];
+<br/>------ employee.push(2, "Bill"); 
+<br/>------ console.log(employee); //Output: [1, 'Steve', 2, 'Bill']
+`
+],
+[`Union types wrt enums
+`,
+`--- Problems with Enums -
+<br/>------- get compiled into a big monster of JS
+`,
+`--- Union types - are shorter and leaner - often just strings
+<br/>------- often can be combined to be even more powerful
+`
+],
+[`Try to stop verbose imports - tsconfig.base.json
+  <br/>--- import {xxx} from '../../../../shared/shared.service'; 
+  <br/>------ instead of 
+  <br/>--- import {xxx} from 'shared/shared.service';   
+  <br/>
+  <br/>--- "paths":{
+    <br/>------ "shared": ["shared"],"shared/*": ["share/*"]
+  <br/>--- }
+ ` 
+], 
+[`Nullish coalescing ??`],
+[`Optional Chaining using ? 
+<br/>let result = data?.key1?.key2;
+
+`],
+[`Partial generic type`]
+['json2ts',
+       '--- website',
+       `--- generate ts interfaces from json from JSON
+      <br/>------ let myQ = Partal<Question> = {
+      <br/>---------- id: 1182,
+      <br/>---------- displayOrder: 1,
+      <br/>---------- text: "which prime number"
+      <br/>------ } 
+       ',
+       '------ from JSON'
+    ],
+   
  [`ts-backend - 
  
  `,
@@ -506,7 +751,11 @@ const subTopicsInfo = [
  'TS4.0 Ang11 - Varadic Tuple types - Labeled Tuple els - Class prop inference from Constructors - Short cirtuit Assignment operators - unknown on Catch - speed imp (--noEmitOnError) --incremental with --noEmit - Editor Improvements'  ,
  'TS4.1 - Template Literal types - Recursive Conditional types - Checked Index accesses(index signature) --noUncheckedIndexAccess - Paths without baseUrl - JSDoc@see',
  'TS4.2 Ang12 - Smarter Type Alias Preservn - Leading-Middle Rest els in Tuples - Stricter Checks for in - abstract Construct Signature',
- 'TS4.3 - override and --noImplicitOverride - Template string Type improvements - ES Private class Els - Constructor pars on Abstract class - Contextual Narrowing for Generics - Always Truthy Promise checks - Static index signatures - tsbuildInfo size improvements - Lazier calcs in --inc --watch - import statement completions  ',
+ `TS4.3 - override and --noImplicitOverride - Template string Type improvements - ES Private class Els - Constructor pars on Abstract class 
+ <br/>- Contextual Narrowing for Generics - Always Truthy Promise checks 
+ <br/>- Static index signatures - tsbuildInfo size improvements 
+ <br/>- Lazier calcs in --inc --watch - import statement completions
+ `,
  'TS4.4 - Default to unknown type in Catch Variables --useUnknownInCatchVariables - Exact Optional Pro perty Types --exactOptionalPropertyTypes - static Blocks in Classes - tsc --help improvements - Performance improvements',  
  'TS4.5 Ang13 - Awaited type -Template string type as Discriminants - import assertions - Private field Presence checks',
  'TS4.6 - target es-2022 - Allow code in constructor before super() - More Syntax + Binding Errors']
