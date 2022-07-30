@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 
 const features = `
-    'const_let_val', 
+
+'const_let_val', 
+    'TS Types',
     'copy_array', 
     'interf_class',
     'V8',
@@ -14,9 +16,6 @@ const features = `
     'Decorators - ',
     'dots', 
     'ts_other',
-    'AWS Services',
-    'AWS Lambda',
-    'AWS SAM',
     'any',
     'Top Level Await',
     'Recursive Type Alias',
@@ -27,12 +26,20 @@ const features = `
     'Union types',
     'Partial generic type,
     'json2ts',
-    'ts-backend',
-    'TS versions'
+    'ts-backend', 
+    'MS Azure',
+    'Azure functions',
+    'AWS Services',
+    'AWS Lambda',
+    'AWS SAM',
+  
+    'TS versions',
 `;
 
 const subTopics = [
-    ['const','let','val'], 
+    ['const','let','val'],
+    ['TS types', 'number', 'string', 'boolean', 'object', 'array'
+    ], 
     ['arrays', 'shallow_copy', 'deep_copy','destructuring'], 
     ['interface', 'class','inheritance', 'inferredTypes', 'optionalChaining', 'nullishCoalescence'], 
     ['V8',
@@ -42,10 +49,9 @@ const subTopics = [
       '--- Node.js',
       '-- runs on Windows 7+ - implements',
       '------ ES (EcmaScript)',
-      '------ WebAssembly',
-
-      
+      '------ WebAssembly'  
     ],
+    
     ['JavaScript', 'EcmaScript', 'ES6-plus'],
     ['TypeScript', 'Type system','a type', 'primitive-types', 'type-inference', 
     'type-generics', 'strong-types', 'strict-null-checks','strict-type-checking',
@@ -56,35 +62,6 @@ const subTopics = [
     ['Decorators'],
     ['rest','spread'],
     ['ts_transpiles-js', 'ngc - Angular Compiler', 'tsconfig.json', 'VS-Code', 'es-all-browsers', 'getter-setter', 'catch-bugs-early', 'tsc-tooling', 'ts-union-types','tuples'],
-    ['AWS Services',
-        '--- EC2',
-        '--- S3',
-        '--- Amazon DynamoDB',
-        '--- Amazon Aurora'
-    ],
-    ['AWS Lambda',
-    '--- Serverless compute service',
-    '--- 3 parts',
-    '--- management console | API',
-    '--- Features',
-    ], 
-    [ 'AWS SAM',
-    '--- CloudFormation Service | Template',
-    '--- SAM Developer Guide',
-    '--- SAM Benefits',
-    '--- SAM CLI',
-    '--- CloudFormation Service',
-    '--- CloudFront - web service',
-    '------- CDN (Content Delivery Network)',
-    '------- fast delivery to S3',
-    '------- CloudFront distribution',
-    '---------- Edge locations',  
-    '------------- cached copies',
-    '------- distributes static | dynamic',
-    '------- Content Privacy - security',
-    '------- GEO-targeting',
-    '------- HTTP| HTTPS - quick delivery'
-   ],
    ['any type'],
    ['Top level await'
   
@@ -98,6 +75,7 @@ const subTopics = [
    ],
    [ 'Type Guards',
    ],
+  
    ['Generics',
   
    ],
@@ -108,6 +86,7 @@ const subTopics = [
        '--- generate ts interfaces',
        '------ from JSON'
     ],
+    
     [  'verbose imports - tsconfig'
     ],
     ['Nullish coalescing ??',
@@ -140,13 +119,148 @@ const subTopics = [
     '--------- AWS CDK',
     '-------------- define Cloud resources',
     ],
-    ['TS3.5','TS3.6-7 Ang9', 'TS3.8','TS3.9 Ang10','TS4.0 Ang11','TS4.1','TS4.2 Ang12','TS4.3','TS4.4','TS4.5 Ang13','TS4.6']
+    ['AWS Services',
+        '--- EC2',
+        '--- S3',
+        '--- Amazon DynamoDB',
+        '--- Amazon Aurora'
+    ],
+    ['AWS Lambda',
+    '--- Serverless compute service',
+    '--- 3 parts',
+    '--- management console | API',
+    '--- Features',
+    ], 
+    [ 'AWS SAM',
+    '--- CloudFormation Service | Template',
+    '--- SAM Developer Guide',
+    '--- SAM Benefits',
+    '--- SAM CLI',
+    '--- CloudFormation Service',
+    '--- CloudFront - web service',
+    '------- CDN (Content Delivery Network)',
+    '------- fast delivery to S3',
+    '------- CloudFront distribution',
+    '---------- Edge locations',  
+    '------------- cached copies',
+    '------- distributes static | dynamic',
+    '------- Content Privacy - security',
+    '------- GEO-targeting',
+    '------- HTTP| HTTPS - quick delivery'
+   ],    
+    ['MS Azure (Azure)',
+      '--- Cloud Computing Service',
+      '--- Appn Mgmt',
+      '------ MS data centers',
+      '--------- large scale virtualization',
+      '------------ SaaS - SW as a Service',
+      '------------ PaaS - Platform aaS',
+      '--------------- App Services',
+      '------------------ publish | manage Websites', 
+      '-------------------- Websites - ASP.NET node.js',
+      '----------------------- Deployed using git|TFS ',
+      '------------ IaaS - Infrastructure aaS',
+      '--------- Languages | Frameworks',
+      '----- WebJob appns - App Service',
+      '--------- background processing',
+      '------------- Blob| Table| Queue services',
+      '----- AKS - Azure Kubernetes Service',
+      '-------- Kubernete worker nodes',
+      '---- Azure Functions',
+      '------- Cloud service',
+      '---------- Serverless Compute for Azure',
+      '---------- Infrastructure + resources',
+      '------------ to run apps',
+      '--------- uses',
+      '----------- Build Web APIs',
+      '----------- Respond to DB changes',
+      '----------- Process IoT streams',
+      '----------- Manage message queues',
+      'DB and Storage',
+      '---- Blob Storage',
+      '---- Azure Cosmos DB',
+      '---- Azure Queue Storage',
+      '---- HTTP',
+      '---- RabbitMQ',
+      '---- SignalR',
+      '---- Table Storage',
+      '---- Twillio',
+      '---- Azure Portal',
+      '------- Integrated tab',
+      '----------- Input | Output bindings',
+      '------- bindings added to',
+      '--------- function.json file',
+      '--------- method attributes'
+    ],    
+    ['Azure Functions',
+    ],
+    ['TS3.5','TS3.6-7 Ang9', 'TS3.8','TS3.9 Ang10','TS4.0 Ang11','TS4.1','TS4.2 Ang12','TS4.3','TS4.4','TS4.5 Ang13','TS4.6'
+  ]
 ];
 
 const subTopicsInfo = [
-  ['const block scope - const x = 10; Hoisting means - ',
+ ['const block scope - const x = 10; Hoisting means - ',
   'let block scope - let y = 24; y = 20;  Hoisting means ',
-  'val global or ftn scope - var z = 30; Hoisting means - '], 
+  'val global or ftn scope - var z = 30; Hoisting means - '
+],
+[`TS Core types
+<br/>--- number, string, boolean, object, array, tuple, enum, any
+`, 
+`number
+<br/>---- x = 4;
+`, 
+`string
+<br/>---- x = "hello";
+`, 
+`boolean
+<br/>---- x = true  ;
+<br/>---- y = false;
+`, 
+`object
+<br/>---- x = {};
+<br/>---- x = {age: 40; name:'Fred Bloggs'};
+`,  
+`array
+<br/>---- x = [1,2,3];
+<br/> 
+<br/>---- Using tuples in Array means more strictness 
+<br/> person: {
+<br/>---- name: string; age: number;
+<br/>---- hobbies: string[]; 
+<br/>---- role: [string];
+<br/>   } = {
+<br/>---- name:'Tom', 
+<br/>---- age: 30,
+<br/>----  hobbies: ['Sports','Cooking'],
+<br/>---- role[2, 'author']
+<br/>}
+`,
+`Tuple 
+<br/>---- [1,2]
+<br/>---- TS Fixed length Array 
+<br/>---- [number, string]
+<br/> 
+<br/> person: {
+  <br/>---- name: string; age: number;
+  <br/>---- hobbies: string[]; 
+  <br/>---- role: [number, string];
+  <br/>   } = {
+  <br/>---- name:'Tom', 
+  <br/>---- age: 30,
+  <br/>----  hobbies: ['Sports','Cooking'],
+  <br/>---- role : ['author','read_only']
+  <br/>}
+  <br/>
+  <br/>person.role.push('Reader');
+`,
+`any
+<br/>---- * most flexible type in TypeScript -
+<br/>---- any type of value and no specific type assignment
+<br/>---- any[];
+<br/>---- Bad practice is using any - 
+<br/>---- can use as a fallback
+`
+], 
   [`arrays are defined within [] and can be 1D- 2D - 3D etc. Approx 32 operations on arrays
   Arrays can be shallow or deep copied and use rest and spread operators and be deconstructed
   `, 
@@ -164,7 +278,7 @@ const subTopicsInfo = [
 
 `],
  [
-  `is the prog language of the WWW - web - a purely dynamic language - where you cant specify data types of variable 
+  `JavaScript is the prog language of the WWW - web - a purely dynamic language - where you cant specify data types of variable 
   <br/>can be used both on the client side and server side - lets you make web pages interactive - gives pages interactive els to engage a user
 `,
 `ES is a modern JS std - meant to ensure the interoperabilty of web pages x diff browsers -
@@ -225,8 +339,8 @@ const subTopicsInfo = [
   <br/>3: Global Analysis - understand NgModule structure - compilation scope + export scope - uses declaration files .d.ts
   <br/>4: Template Type-Checking - Ang Comp converts templates into TS code - TCB (Type Check Block) - semantic checking 
   <br/>5: Emit - generates .js code removing decorators - static fields added to classes  (for libraries - .d.ts files)
-  
-  ngc - 2 main tools -
+  <br/>
+  <br/>ngc - 2 main tools -
   <br/>1: Import graph -
   <br/>2: Semantic Dependency graph - 
   `,
@@ -243,117 +357,37 @@ const subTopicsInfo = [
   'Union types - permit us to assign a variable as a combination of 2 or more types eg myval: number|string;', 
   'Tuples - a comma sep list of els inside ()- (2,4,7,9)'
  ],
- [`AWS Services -  
-        <br/>S3 (Amazon Simple Storage Service) - Object storage built to Rx any data from anywhere  
-         <br/>
-        <br/>Amazon EC2 - Virtual servers in the cloud
-        <br/>
-        <br/>Amazon Lightsail - Launch and manage virtual private servers eg EC2
-        <br/>
-        <h1>Databases</h1>
-        <br/>Amazon DynamoDB - Managed NoSQL database -
-        <br/>
-        <br/>Amazone Aurora - High perf managed relational db
- `],
- [`AWS Lambda - 
-     <br/>is a serverless compute service that runs your code in response to events
-     <br/>and auto manages the underlying compute resources for you
-     <br/>
-     <br/>--- comprises 3 Components - 
-     <br/>------ 1: function - actual code that performs the task
-     <br/>------ 2: configuration - how ftn is executed
-     <br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
-     <br/>--------------- eg changes in state or an update - add item to cart 
- `,
- `--- Serverless compute service`,
- `--- 3 parts
- <br/>------ 1: function - actual code that performs the task
- <br/>------ 2: configuration - how ftn is executed
- <br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
- <br/>--------------- eg changes in state or an update - add item to cart
- `,
- `--- provides a management console and API 
- <br/>------ for managing and invoking functions 
- <br/>------ provides supporting std set of features
- <br/>---------- easily switch languaes | frameworks 
- <br/>------ not just ftns
- <br/>--------- versions| aliases| layers| cutom runtimes 
- `,
- `--- Features
- <br/>------ Scaling
- <br/>----------- runs additional instances - then stopped
- <br/>------ Concurrency controls
- <br/>----------- concurrency settings | reserved concurrency - subsets 
- <br/>------ Function URLS
- <br/>----------- built in HTTPS endpoints - webbrowser
- <br/>------ Async invocation
- <br/>----------- Lambda queues evt for processing and returns immediately
- <br/>------ Event source mappings
- <br/>----------- reads items from a SQS (Simple Queue Service) queue | Kinesis| DynamoDB stream
- <br/>----------- sends items to ftns in batches - ftn can contain 100000 items
- <br/>------ Destinations  
- <br/>----------- resource to Rx invocation records for ftns
- <br/>----------- async - send records to a queue| topic| ftn| event bus
- <br/>------ Function blueprints
- <br/>----------- ftns - from scratch | blueprint | container image | AWS SAR
- <br/>----------- blueprints - Node.js | Python runtimes  
- <br/>----------- only in the Lambda console
- <br/>------ Testing and Deployment tools
- <br/>----------- Deploy code as is or container images (Docker)
- <br/>----------- Docker CLI | AWS
- <br/>----------- AWS CLI  | SAM CLI 
- <br/>----------- SAM CLI - validating templates | test locally | integrate with CI/CD  
- `
-],
-[` AWS SAM (Serverless Appn Model) 
-<br/>--- use AWS SAM CLI to create a serverless appn  
-<br/>---- that you can package + deploy in AWS Cloud  
-<br/>----- Run the appn both in
-<br/>---  AWS Cloud 
-<br/>----- locally on your devt host
-`,
-`---- builds on CloudFormation Model + CloudFormation template 
-<br/>--- easily deploy resources from within CF template
-`,
-`--- SAM Developer Guide 
-<br/>------ https://docs.aws.amazon.com/serverless-application-model/latest/developerguide
-`,
-`---- CloudFormation Service | Template
-`,
-`---------- SAM benefits 
-<br/>---------- 
-`,
-`---------- SAM CLI  
-<br/>---------- console - great way to create resources manually  
-`,
-`------ AWS CloudFormation service
-<br/>------ define and configure resources inside a file
-<br/>------ provide file to Conformation service
-<br/>------ creates defined resources inside AWS  
-<br/>------ define resources inside a template to conformation service
-<br/>------ deploys all resources for you (Infrastructure as Code)
-<br/>------ improved by using the SAM - 
-`,  
-
-   `--------- CloudFormation Service
-   
-   `,
-   `--------- CloudFront - web service
-   
-   `,
-   `------------ CDN (Content Delivery Network)
-   `,
-   `------------ fast delivery to S3`,
-   `-------------- CloudFront distribution`,
-   `---------------- Edge locations`,  
-   `---------------- cached copies`,
-   `------------ distributes static | dynamic
-   `,
-   `------------ Content Privacy - security`,
-   `------------ GEO-targeting`,
-   `------------ HTTP| HTTPS - quick delivery`,
-], 
 ['any type'],
+[`More adv Types
+
+`,
+`Unions
+<br/>---- x : number | string;
+<br/>---- use typeof x === 'number'
+<br/>---- toString() - convert to string
+`,
+`Function Types 
+<br/> ---- must return a value
+<br/>---- cannot return undefined
+<br/>---- can return 
+<br/>
+<br/>---- let x: (a: number, b:number) => number;
+<br/>
+<br/>Callback ftns
+<br/>---- let x: (a: number, b:number, cb:(num:number)=> void){
+     const   result = a + b;
+     cb(result);
+     // can return a value even we used void
+} 
+      const number;
+<br/>
+
+
+
+
+],
+
+
 [`Top Level Await -  
 <br/>// Your only solution right now for a script that does something async:
 <br/>async function doEverything() {
@@ -380,7 +414,6 @@ const subTopicsInfo = [
   [`Conditional Types - guarantee types during runtime
 <br/>--- relation between types of inputs and outputs 
 <br/>------ (condition ? trueExp: falseExp)
-
 <br/>
 <br/>--- very powerful when combined with Generics
 <br/>------ 
@@ -393,31 +426,31 @@ const subTopicsInfo = [
     <br/>---------    case 'Tesla':
     <br/>------------        return new Tesla();
     <br/>---------    default:
-    <br/>------------        throw Error(\`Car brand \'${brand}\' not supported.\`);
+    <br/>------------        throw Error(\`Car brand \'\${brand}\' not supported.\`);
     <br/>------}
     <br/>---}
-
 `],
-  
 [`Union - describes a value that can be one of several types 
 <br/> x: string|number; 
 
 `],
+
 [`Template Literal Types - let us build more flexible types  
 <br/>--- using \` and $
 <br/>
 <br/>--- type Hello = "Hello";
 <br/>--- type World = "World";
-<br/>--- type HelloWorld = \`${Hello}${World}!\`;
+<br/>--- type HelloWorld = \`\${Hello}\${World}!\`;
 <br/>
 <br/>--- Good when used with interpolated union types
 <br/>
 <br/>type EntityType = 'Message' | 'Folder' | 'File' | 'NewEntity';
 <br/>type EventOperations = 'Created' | 'Updated' | 'Deleted';
-<br/>type EventNames = \`on${EntityType}${EventOperations}\`;
+<br/>type EventNames = \`on\${EntityType}\${EventOperations}\`;
 <br/>
 `
 ],
+  
 [`Type Guards - 
 <br/>--- used to get info about the type of a variable 
 <br/>-------- usually within a conditional block 
@@ -448,7 +481,8 @@ const subTopicsInfo = [
 <br/>}
 <br/>------ 
 `
-],   
+],
+ 
 [`Generics - provide a way to write flexible code 
 <br/>---- that can work with various data types (instead of 1 type)
 <br/> 
@@ -463,6 +497,7 @@ const subTopicsInfo = [
 <br/>}
 <br/>
 `],
+
 [`variadic tuple types
 <br/>--- lets tuples handle the rest operator ...
 `,
@@ -517,6 +552,7 @@ const subTopicsInfo = [
 <br/>------ console.log(employee); //Output: [1, 'Steve', 2, 'Bill']
 `
 ],
+
 [`Union types wrt enums
 `,
 `--- Problems with Enums -
@@ -526,13 +562,14 @@ const subTopicsInfo = [
 <br/>------- often can be combined to be even more powerful
 `
 ],
+
 [`Try to stop verbose imports - tsconfig.base.json
   <br/>--- import {xxx} from '../../../../shared/shared.service'; 
   <br/>------ instead of 
   <br/>--- import {xxx} from 'shared/shared.service';   
   <br/>
   <br/>--- "paths":{
-    <br/>------ "shared": ["shared"],"shared/*": ["share/*"]
+    <br/>------ "shared": ["shared"],"shared": ["share"]
   <br/>--- }
  ` 
 ], 
@@ -541,7 +578,8 @@ const subTopicsInfo = [
 <br/>let result = data?.key1?.key2;
 
 `],
-[`Partial generic type`]
+[`Partial generic type`],
+
 ['json2ts',
        '--- website',
        `--- generate ts interfaces from json from JSON
@@ -550,19 +588,22 @@ const subTopicsInfo = [
       <br/>---------- displayOrder: 1,
       <br/>---------- text: "which prime number"
       <br/>------ } 
-       ',
+       `,
        '------ from JSON'
     ],
-   
- [`ts-backend - 
+               
+ [
+ `ts-backend - 
  
  `,
+ 
   `--- Node.js and AWS Lambda
-    <br/>----- Node.js - doesn't run TS code natively
+    <br/>----- Node.js - doesn\'t run TS code natively
     <br/>----- First transpile TS to JS 
     <br/>-------- Use JS files to deploy ftn code to Lambda
     <br/>----------- Code runs in envt - includes - AWS-SDK for JS
   `,
+  
   `------ Use Node.js runtime 
   <br/>------- to run TS code in AWS Lambda    
   
@@ -609,9 +650,10 @@ const subTopicsInfo = [
   `------------- transform API 
   <br/>------------ operates on 1 string withou access to a file system
   <br/>---------------- ideal in browsers or as part of a tool chain  
-  <br/> $ echo 'let x: number = 1' | esbuild --loader=ts
-  <be/> let x = 1;
+  <br/> $ echo \'let x: number = 1\' | esbuild --loader=ts
+  <br/> let x = 1;
   `,
+  
   `---------------- Simple Transform Opions
   <br/>-------------- Define
   <br/>-------------- Format
@@ -643,6 +685,7 @@ const subTopicsInfo = [
 <br/>-------------- Tree shaking
 <br/>-------------- Tsconfig raw
 `,
+
 `------------- build API 
     <br/>------------ operates on 1+ files in file system
     <br/>---------------- allows files to ref eachothre and be bundled together
@@ -743,6 +786,117 @@ const subTopicsInfo = [
   <br/>--------- 
   ` 
 ],
+
+[`AWS Services -  
+<br/>S3 (Amazon Simple Storage Service) - Object storage built to Rx any data from anywhere  
+ <br/>
+<br/>Amazon EC2 - Virtual servers in the cloud
+<br/>
+<br/>Amazon Lightsail - Launch and manage virtual private servers eg EC2
+<br/>
+<h1>Databases</h1>
+<br/>Amazon DynamoDB - Managed NoSQL database -
+<br/>
+<br/>Amazone Aurora - High perf managed relational db
+`],
+[`AWS Lambda - 
+<br/>is a serverless compute service that runs your code in response to events
+<br/>and auto manages the underlying compute resources for you
+<br/>
+<br/>--- comprises 3 Components - 
+<br/>------ 1: function - actual code that performs the task
+<br/>------ 2: configuration - how ftn is executed
+<br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
+<br/>--------------- eg changes in state or an update - add item to cart 
+`,
+`--- Serverless compute service`,
+`--- 3 parts
+<br/>------ 1: function - actual code that performs the task
+<br/>------ 2: configuration - how ftn is executed
+<br/>------ 3: event source (optional) - event that triggers ftn eg AWS Services
+<br/>--------------- eg changes in state or an update - add item to cart
+`,
+`--- provides a management console and API 
+<br/>------ for managing and invoking functions 
+<br/>------ provides supporting std set of features
+<br/>---------- easily switch languaes | frameworks 
+<br/>------ not just ftns
+<br/>--------- versions| aliases| layers| cutom runtimes 
+`,
+`--- Features
+<br/>------ Scaling
+<br/>----------- runs additional instances - then stopped
+<br/>------ Concurrency controls
+<br/>----------- concurrency settings | reserved concurrency - subsets 
+<br/>------ Function URLS
+<br/>----------- built in HTTPS endpoints - webbrowser
+<br/>------ Async invocation
+<br/>----------- Lambda queues evt for processing and returns immediately
+<br/>------ Event source mappings
+<br/>----------- reads items from a SQS (Simple Queue Service) queue | Kinesis| DynamoDB stream
+<br/>----------- sends items to ftns in batches - ftn can contain 100000 items
+<br/>------ Destinations  
+<br/>----------- resource to Rx invocation records for ftns
+<br/>----------- async - send records to a queue| topic| ftn| event bus
+<br/>------ Function blueprints
+<br/>----------- ftns - from scratch | blueprint | container image | AWS SAR
+<br/>----------- blueprints - Node.js | Python runtimes  
+<br/>----------- only in the Lambda console
+<br/>------ Testing and Deployment tools
+<br/>----------- Deploy code as is or container images (Docker)
+<br/>----------- Docker CLI | AWS
+<br/>----------- AWS CLI  | SAM CLI 
+<br/>----------- SAM CLI - validating templates | test locally | integrate with CI/CD  
+`
+],
+[` AWS SAM (Serverless Appn Model) 
+<br/>--- use AWS SAM CLI to create a serverless appn  
+<br/>---- that you can package + deploy in AWS Cloud  
+<br/>----- Run the appn both in
+<br/>---  AWS Cloud 
+<br/>----- locally on your devt host
+`,
+`---- builds on CloudFormation Model + CloudFormation template 
+<br/>--- easily deploy resources from within CF template
+`,
+`--- SAM Developer Guide 
+<br/>------ https://docs.aws.amazon.com/serverless-application-model/latest/developerguide
+`,
+`---- CloudFormation Service | Template
+`,
+`---------- SAM benefits 
+<br/>---------- 
+`,
+`---------- SAM CLI  
+<br/>---------- console - great way to create resources manually  
+`,
+`------ AWS CloudFormation service
+<br/>------ define and configure resources inside a file
+<br/>------ provide file to Conformation service
+<br/>------ creates defined resources inside AWS  
+<br/>------ define resources inside a template to conformation service
+<br/>------ deploys all resources for you (Infrastructure as Code)
+<br/>------ improved by using the SAM - 
+`,  
+
+`--------- CloudFormation Service
+
+`,
+`--------- CloudFront - web service
+
+`,
+`------------ CDN (Content Delivery Network)
+`,
+`------------ fast delivery to S3`,
+`-------------- CloudFront distribution`,
+`---------------- Edge locations`,  
+`---------------- cached copies`,
+`------------ distributes static | dynamic
+`,
+`------------ Content Privacy - security`,
+`------------ GEO-targeting`,
+`------------ HTTP| HTTPS - quick delivery`,
+],
  [
  'TS3.5 - Speed improvements - Omit helper type - --allowUmdGlobalAccess - Smarter Union checking - Higher order type inference from generic constructors',  
  'TS3.6-7 Ang9 - Optional Chaining ?. - Nullish Coalescing ?? (default val when null or undefined)- Assertion Functions - More Recursive aliases - --declaration --allowJS - useDefineForClassFields - Uncalled Function Checks', 
@@ -758,7 +912,8 @@ const subTopicsInfo = [
  `,
  'TS4.4 - Default to unknown type in Catch Variables --useUnknownInCatchVariables - Exact Optional Pro perty Types --exactOptionalPropertyTypes - static Blocks in Classes - tsc --help improvements - Performance improvements',  
  'TS4.5 Ang13 - Awaited type -Template string type as Discriminants - import assertions - Private field Presence checks',
- 'TS4.6 - target es-2022 - Allow code in constructor before super() - More Syntax + Binding Errors']
+ 'TS4.6 - target es-2022 - Allow code in constructor before super() - More Syntax + Binding Errors'
+]
 ]; 
 
 @Component({
