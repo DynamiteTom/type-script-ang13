@@ -10,7 +10,9 @@ const features = `
     'V8',
     'JavaScript',
     'types', 
-    'Objects','
+    'Objects',
+    '--- Object creation {}',
+    '--- Object destructuring',
     'namespace', 
     'Modules', 
     'Decorators - ',
@@ -41,7 +43,13 @@ const subTopics = [
     ['TS types', 'number', 'string', 'boolean', 'object', 'array'
     ], 
     ['arrays', 'shallow_copy', 'deep_copy','destructuring'], 
-    ['interface', 'class','inheritance', 'inferredTypes', 'optionalChaining', 'nullishCoalescence'], 
+    ['interface', 
+    'class',
+    'inheritance', 
+    'inferredTypes', 
+    'optionalChaining', 
+    'nullishCoalescence'
+    ], 
     ['V8',
       '--- Google JS + WebAssembly',
       '------ C++',
@@ -51,19 +59,86 @@ const subTopics = [
       '------ ES (EcmaScript)',
       '------ WebAssembly'  
     ],
-    
     ['JavaScript', 'EcmaScript', 'ES6-plus'],
-    ['TypeScript', 'Type system','a type', 'primitive-types', 'type-inference', 
-    'type-generics', 'strong-types', 'strict-null-checks','strict-type-checking',
-      'read-only','partial-types','template-literal-types','Type Guards','narrowing'], 
-    ['Object types', 'Property modifiers', 'Array', 'destructuring','spread ...'],
+    ['TypeScript', 
+    'Type system',
+    'a type', 
+    'primitive-types', 
+    'type-inference', 
+    'type-generics', 
+    'interfaces',
+    'objects',
+    'object-destructuring',
+    'strong-types', 
+    'strict-null-checks',
+    'strict-type-checking',
+    'read-only',
+    'partial-types',
+    'template-literal-types',
+    'Type Guards',
+    'narrowing'
+    ],
+    ['interfaces',
+     '--- abstract type',
+     '--- strong typing'
+    ], 
+    ['Object types', 
+    'Property modifiers', 
+    'Array', 
+    'destructuring',
+    'spread ...'
+    ],
+    [`Object creation 
+     <br/>--- Objects are defined using the {} braces
+     <br/>
+     <br/>--- using type definition
+     <br/>--- type HasName = {firstName: string, lastName: string};
+     <br/>
+     <br/>-------- Optional properties ?
+     <br/>-------- type HasName = {firstName?: string, lastName: string};
+     <br/>
+     <br/>-------- Interface instead
+     <br/>-------- interface HasName {firstName?: string, lastName: string};
+     <br/>
+     <br/>-------- Auto-completion HasName.
+     `,
+    ],
+    [`Object Destructuring
+    <br/>--- JS extract properties from an Object and bind to variables
+    <br/>------ can extract multiple properties in one statement
+    <br/>------ can access properties from nested objects
+    <br/>------ can set a default value if no property exists
+    <br/>
+    <br/>--- We can unpack values from an array 
+    `],
+    [ 'Rest and Spread operators ...',
+      'rest operators ...',
+      'spread operators ...'
+    ],
     ['namespaces - '],
     ['Modules - ','d.ts files'],
     ['Decorators'],
     ['rest','spread'],
-    ['ts_transpiles-js', 'ngc - Angular Compiler', 'tsconfig.json', 'VS-Code', 'es-all-browsers', 'getter-setter', 'catch-bugs-early', 'tsc-tooling', 'ts-union-types','tuples'],
-   ['any type'],
-   ['Top level await'
+    ['ts-union-types'
+    ],
+    ['tuples',
+      '--- group typed values',
+      '--- looks like array',
+      '-------- position dept',
+      '--- tuple ex'
+    ],
+    ['any type'],
+    ['Top level await'
+    ],
+   ['ts_transpiles-js', 
+   'ngc - Angular Compiler', 
+   'tsconfig.json', 
+   'VS-Code', 
+   'es-all-browsers', 
+   'getter-setter', 
+   'catch-bugs-early',  
+  ],
+   ['tsc-tooling',
   
    ],
    ['Recursive Type Alias'],
@@ -381,10 +456,47 @@ const subTopicsInfo = [
 } 
       const number;
 <br/>
+`,
+`Unknown - 
+<br/>---- more strict than any
+`
+],
+[`tuples
+<br/>--- A <b>group of values</b> with its <b>own specific type</b> and in the <b>right order</b>
+<br/>--- used with <b>RxJS library</b> 
+<br/>--- also used in Rel DBs - RLDBs - 
+<br/>------- a record in a table 
+<br/>
+<br/>--- looks like an array
+<br/>------ but can have different types
+<br/>
+<br/>type CourseRecord = [string, string, number]; // using []
+<br/>
+<br/>const courseRecord: CourseRecord = ['AAA', 'BBB', 100];
 
+`,
+`--- group typed values
 
+`,
+`--- looks like array
+<br/>------ but can have different types
+<br/>type CourseRecord = [string, string, number]; // using []
+<br/>
+`,
+'-------- position dept',
+`--- Tuple example  
+<br/>interface Course {
+  <br/>--- title: string;
+  <br/>--- subTitle: string;
+  <br/>--- lessonCount: number;
+<br/>}
+<br/>
+<br/>type CourseRecord = [string, string, number]; // using []
+<br/>
+<br/>const courseRecord: CourseRecord = ['AAA', 'BBB', 100];
+}
 
-
+`
 ],
 
 
